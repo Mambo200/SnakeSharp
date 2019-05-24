@@ -53,5 +53,39 @@ namespace Snake
             x -= 1;
         }
 
+        #region Operator
+        public static Vector2 operator +(Vector2 left, Vector2 right)
+        {
+            return new Vector2(left.x + right.x, left.y + right.y);
+        }
+        public static Vector2 operator -(Vector2 left, Vector2 right)
+        {
+            return new Vector2(left.x - right.x, left.y - right.y);
+        }
+        public static Vector2 operator *(Vector2 left, int right)
+        {
+            return new Vector2(left.x * right, left.y * right);
+        }
+        public static bool operator ==(Vector2 left, Vector2 right)
+        {
+            if (left.x == right.x &&
+                left.y == right.y)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public static bool operator !=(Vector2 left, Vector2 right)
+        {
+            if (left.x != right.x &&
+                left.y != right.y)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        #endregion
     }
 }

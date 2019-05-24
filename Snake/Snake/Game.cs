@@ -26,12 +26,15 @@ namespace Snake
                 );
             m = new Movement();
             Field.DrawField();
+
+            Food.Start(p);
         }
 
         public void Run()
         {
             Time.Wait();
             m.Move(p, p.CurrentDir, p.NextDir);
+            Food.Update();
             p.Draw();
         }
     }
