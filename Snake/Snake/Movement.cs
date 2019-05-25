@@ -19,25 +19,35 @@ namespace Snake
                 case NextDirection.NONE:
                     goforCurrentDir = true;
                     break;
-                case NextDirection.TOP:
-                    headPos.Up();
+                case NextDirection.UP:
+                    if (_currentDir != NextDirection.DOWN)
+                        headPos.Up();
+                    _player.SetCurrentDirection(NextDirection.UP);
                     break;
                 case NextDirection.DOWN:
-                    headPos.Down();
+                    if (_currentDir != NextDirection.UP)
+                        headPos.Down();
+                    _player.SetCurrentDirection(NextDirection.DOWN);
                     break;
                 case NextDirection.LEFT:
-                    headPos.Left();
+                    if (_currentDir != NextDirection.RIGHT)
+                        headPos.Left();
+                    _player.SetCurrentDirection(NextDirection.LEFT);
                     break;
                 case NextDirection.RIGHT:
-                    headPos.Right();
+                    if (_currentDir != NextDirection.LEFT)
+                        headPos.Right();
+                    _player.SetCurrentDirection(NextDirection.RIGHT);
                     break;
             }
+
+            _player.ResetNextDirection();
 
             if (goforCurrentDir)
             {
                 switch (_currentDir)
                 {
-                    case NextDirection.TOP:
+                    case NextDirection.UP:
                         headPos.Up();
                         break;
                     case NextDirection.DOWN:

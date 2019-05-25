@@ -9,7 +9,7 @@ namespace Snake
     enum NextDirection
     {
         NONE,
-        TOP,
+        UP,
         DOWN,
         LEFT,
         RIGHT

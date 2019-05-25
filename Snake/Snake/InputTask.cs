@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -11,6 +12,10 @@ namespace Snake
         #region Add Task
         public static void Add(Action _action)
         {
+            var tokenSource2 = new CancellationTokenSource();
+            CancellationToken ct = tokenSource2.Token;
+            
+
             Task t = new Task(_action);
             TaskToRun.Add(t, false);
             t.Start();
@@ -28,6 +33,18 @@ namespace Snake
         {
             Task t = new Task(_action);
             TaskToRun.Remove(t);
+            
+        }
+
+        internal static void RemoveAll()
+        {
+            Dictionary<Task, bool> backup = new Dictionary<Task, bool>(TaskToRun);
+            foreach (KeyValuePair<Task, bool> t in backup)
+            {
+                
+            }
+
+            TaskToRun.Clear();
         }
 
         public static void Remove(Task _task)
@@ -38,12 +55,12 @@ namespace Snake
 
         public static void Update()
         {
-            foreach(KeyValuePair<Task, bool> entry in TaskToRun)
+            Dictionary<Task, bool> backup = new Dictionary<Task, bool>(TaskToRun);
+            foreach(KeyValuePair<Task, bool> entry in backup)
             {
-                if (entry.Value)
+                if (entry.Key.IsCompleted)
                 {
-                    entry.Key.Start();
-                    TaskToRun[entry.Key] = false;
+                    TaskToRun.Remove(entry.Key);
                 }
             }
         }
