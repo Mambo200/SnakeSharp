@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    struct Vector2
+    struct Vector2 : IEquatable<Vector2>
     {
         public int x;
         public int y;
@@ -38,11 +38,11 @@ namespace Snake
         }
         public void Up()
         {
-            y += 1;
+            y -= 1;
         }
         public void Down()
         {
-            y -= 1;
+            y += 1;
         }
         public void Right()
         {
@@ -51,6 +51,26 @@ namespace Snake
         public void Left()
         {
             x -= 1;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Vector2 && Equals((Vector2)obj);
+        }
+
+        public bool Equals(Vector2 other)
+        {
+            return x == other.x &&
+                   y == other.y;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1486514462;
+            hashCode = hashCode * -1521134295 + x.GetHashCode();
+            hashCode = hashCode * -1521134295 + y.GetHashCode();
+            hashCode = hashCode * -1521134295 + positionInTail.GetHashCode();
+            return hashCode;
         }
 
         #region Operator

@@ -8,34 +8,31 @@ namespace Snake
 {
     class Game
     {
+        public static Player player;
         public static Boolean isRunning = false;
 
         public const int GAMEWIDTH = 60;
         public const int GAMEHEIGHT = 30;
 
         private string[,] GameBoard { get; set; }
-        Player p;
         Movement m;
         public void Start()
         {
-            p = new Player();
-            p.AddTail(
-                new Vector2(5, 5),
-                new Vector2(6, 5),
-                new Vector2(7, 5)
-                );
+            player = new Player();
+            player.AddTail(8);
             m = new Movement();
             Field.DrawField();
-
-            Food.Start(p);
+            player.SetCurrentDirection(NextDirection.RIGHT);
+            Food.Start(player);
         }
 
         public void Run()
         {
             Time.Wait();
-            m.Move(p, p.CurrentDir, p.NextDir);
+            m.Move(player, player.CurrentDir, player.NextDir);
             Food.Update();
-            p.Draw();
+            Collision.Update();
+            player.Draw();
         }
     }
 }

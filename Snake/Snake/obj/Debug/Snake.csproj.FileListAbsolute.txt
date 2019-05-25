@@ -1,7 +1,6 @@
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\bin\Debug\Snake.exe.config
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\bin\Debug\Snake.exe
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\bin\Debug\Snake.pdb
-E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\obj\Debug\Snake.csprojAssemblyReference.cache
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\obj\Debug\Snake.csproj.CoreCompileInputs.cache
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\obj\Debug\Snake.exe
 E:\Tobias\Dokumente\Github Zeug\Snake#\Snake\Snake\obj\Debug\Snake.pdb

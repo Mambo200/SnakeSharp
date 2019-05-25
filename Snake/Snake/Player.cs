@@ -11,7 +11,8 @@ namespace Snake
         public Player()
         {
             NextDir = NextDirection.NONE;
-            CurrentDir = NextDirection.TOP;
+            CurrentDir = NextDirection.UP;
+            InputTask.Add(GetInput);
         }
 
         public List<Tail> Tails = new List<Tail>();
@@ -21,8 +22,11 @@ namespace Snake
         public NextDirection CurrentDir { get; private set; }
         public NextDirection NextDir { get; private set; }
 
+        public static bool alive = true;
+
         void GetInput()
         {
+            // get key input
             ConsoleKeyInfo i = Console.ReadKey();
             switch (i.Key)
             {
@@ -30,7 +34,7 @@ namespace Snake
                     NextDir = NextDirection.LEFT;
                     break;
                 case ConsoleKey.UpArrow:
-                    NextDir = NextDirection.TOP;
+                    NextDir = NextDirection.UP;
                     break;
                 case ConsoleKey.RightArrow:
                     NextDir = NextDirection.RIGHT;
@@ -39,6 +43,17 @@ namespace Snake
                     NextDir = NextDirection.DOWN;
                     break;
             }
+            InputTask.Add(GetInput);
+
+            // reset object
+            Vector2 v2 = Tails.Last().Position;
+            v2.Right();
+            Console.SetCursorPosition(v2.x, v2.y);
+            if (Collision.WallCollision(v2))
+                Console.Write(FieldChars.WALL);
+            else
+                Console.Write(FieldChars.EMPTY);
+            Console.SetCursorPosition(v2.x - 1, v2.y);
         }
 
         public void Draw()
@@ -50,6 +65,16 @@ namespace Snake
             }
         }
 
+        public void AddTail(int _tailCount)
+        {
+            int yPos = 1;
+            for (int i = 0; i < _tailCount; i++)
+            {
+                AddTail(new Vector2(1, yPos));
+                yPos++;
+            }
+        }
+
         public void AddTail(params Vector2[] _positions)
         {
             foreach (Vector2 v2 in _positions)
@@ -57,6 +82,22 @@ namespace Snake
                 Tails.Add(new Tail(v2));
             }
         }
+
+        public void SetCurrentDirection(NextDirection _currentDir)
+        {
+            CurrentDir = _currentDir;
+        }
+
+        public void SetNextDirection(NextDirection _nextDir)
+        {
+            NextDir = _nextDir;
+        }
+
+        public void ResetNextDirection()
+        {
+            NextDir = NextDirection.NONE;
+        }
+
 
         ~Player()
         {

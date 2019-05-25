@@ -11,18 +11,30 @@ namespace Snake
         static void Main(string[] args)
         {
             Game.isRunning = true;
-            Game g = new Game();
 
             Console.SetWindowSize(120, 40);
 
-            g.Start();
 
-            InputTask.Add(DEV.DoTesting);
+            //InputTask.Add(DEV.DoTesting);
 
             while (Game.isRunning)
             {
-                InputTask.Update();
-                g.Run();
+                Player.alive = true;
+                Game g = new Game();
+                g.Start();
+                while (Player.alive)
+                {
+                    InputTask.Update();
+                    g.Run();
+                }
+
+                InputTask.RemoveAll();
+                Console.SetCursorPosition(5, 5);
+                Console.WriteLine("Game Over");
+                Console.SetCursorPosition(5, 6);
+                Console.WriteLine("Continue? y/n");
+                if (Console.ReadKey().Key == ConsoleKey.N)
+                    Game.isRunning = false;
             }
 
         }
