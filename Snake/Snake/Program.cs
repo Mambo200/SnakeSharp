@@ -15,10 +15,16 @@ namespace Snake
 
             Console.SetWindowSize(120, 40);
 
+            g.Start();
+
+            InputTask.Add(DEV.DoTesting);
+
             while (Game.isRunning)
             {
+                InputTask.Update();
                 g.Run();
             }
+
         }
     }
 }
