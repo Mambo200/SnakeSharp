@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Snake.Core;
+using Snake.Game;
+using Snake.MultiThreading;
 
-using FC = Snake.FieldChars;
+using FC = Snake.Field.FieldChars;
 
-namespace Snake
+namespace Snake.Field
 {
     static class Field
     {
@@ -14,8 +17,8 @@ namespace Snake
         {
             Console.Clear();
 
-            int height = Game.GAMEHEIGHT;
-            int width = Game.GAMEWIDTH;
+            int height = Game.Game.GAMEHEIGHT;
+            int width = Game.Game.GAMEWIDTH;
             string[] toDraw = new string[height];
 
             // draw borders

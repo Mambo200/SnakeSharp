@@ -1,16 +1,22 @@
-﻿using System;
+﻿using Snake.Field;
+using Snake.Game;
+using Snake.MultiThreading;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake
+namespace Snake.Core
 {
     class Tail
     {
         public Tail(Vector2 _position)
         {
             Position = _position;
+            Helper.SetCursorPosition(new Vector2(0, 0));
+            Console.Write(FieldChars.WALL);
         }
 
         public Tail(int _x, int _y)

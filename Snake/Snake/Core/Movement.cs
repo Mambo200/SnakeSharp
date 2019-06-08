@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Snake.Field;
+using Snake.Game;
+using Snake.MultiThreading;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake
+namespace Snake.Core
 {
     class Movement
     {
@@ -21,26 +25,43 @@ namespace Snake
                     break;
                 case NextDirection.UP:
                     if (_currentDir != NextDirection.DOWN)
+                    {
                         headPos.Up();
-                    _player.SetCurrentDirection(NextDirection.UP);
+                        _player.SetCurrentDirection(NextDirection.UP);
+                    }
+                    else
+                        goforCurrentDir = true;
+
                     break;
                 case NextDirection.DOWN:
                     if (_currentDir != NextDirection.UP)
+                    {
                         headPos.Down();
-                    _player.SetCurrentDirection(NextDirection.DOWN);
+                        _player.SetCurrentDirection(NextDirection.DOWN);
+                    }
+                    else
+                        goforCurrentDir = true;
                     break;
                 case NextDirection.LEFT:
                     if (_currentDir != NextDirection.RIGHT)
+                    {
                         headPos.Left();
-                    _player.SetCurrentDirection(NextDirection.LEFT);
+                        _player.SetCurrentDirection(NextDirection.LEFT);
+                    }
+                    else
+                        goforCurrentDir = true;
                     break;
                 case NextDirection.RIGHT:
                     if (_currentDir != NextDirection.LEFT)
+                    {
                         headPos.Right();
-                    _player.SetCurrentDirection(NextDirection.RIGHT);
+                        _player.SetCurrentDirection(NextDirection.RIGHT);
+                    }
+                    else
+                        goforCurrentDir = true;
                     break;
             }
-
+            
             _player.ResetNextDirection();
 
             if (goforCurrentDir)

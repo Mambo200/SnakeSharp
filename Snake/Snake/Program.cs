@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Snake.Game;
+using Snake.MultiThreading;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,31 +12,34 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Game.isRunning = true;
+            Game.Game.isRunning = true;
 
             Console.SetWindowSize(120, 40);
 
-
             //InputTask.Add(DEV.DoTesting);
 
-            while (Game.isRunning)
+            while (Game.Game.isRunning)
             {
                 Player.alive = true;
-                Game g = new Game();
+                Game.Game g = new Game.Game();
                 g.Start();
                 while (Player.alive)
                 {
                     InputTask.Update();
+                    InputThread.Update();
                     g.Run();
                 }
 
-                InputTask.RemoveAll();
+                //InputTask.Update(); // one last time to remove all
+                InputThread.RemoveAll();
+
                 Console.SetCursorPosition(5, 5);
                 Console.WriteLine("Game Over");
                 Console.SetCursorPosition(5, 6);
                 Console.WriteLine("Continue? y/n");
-                if (Console.ReadKey().Key == ConsoleKey.N)
-                    Game.isRunning = false;
+                ConsoleKey key = Console.ReadKey().Key;
+                if (key == ConsoleKey.N)
+                    Game.Game.isRunning = false;
             }
 
         }

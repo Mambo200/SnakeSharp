@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Snake.Field;
+using Snake.Game;
+using Snake.MultiThreading;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake
+namespace Snake.Core
 {
     struct Vector2 : IEquatable<Vector2>
     {
@@ -78,9 +82,17 @@ namespace Snake
         {
             return new Vector2(left.x + right.x, left.y + right.y);
         }
+        public static Vector2 operator +(Vector2 left, int right)
+        {
+            return new Vector2((left.x + right), (left.y + right));
+        }
         public static Vector2 operator -(Vector2 left, Vector2 right)
         {
             return new Vector2(left.x - right.x, left.y - right.y);
+        }
+        public static Vector2 operator -(Vector2 left, int right)
+        {
+            return new Vector2((left.x - right), (left.y - right));
         }
         public static Vector2 operator *(Vector2 left, int right)
         {
