@@ -37,7 +37,7 @@ namespace Snake.Game
             Food.Start(player);
             player.Start();
 
-            Music.Music.Start();
+            //Music.Music.Start();
         }
 
         public void Run()
@@ -47,7 +47,6 @@ namespace Snake.Game
             Food.Update();
             Collision.Update();
             player.Draw();
-            
         }
     }
 }

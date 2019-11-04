@@ -13,6 +13,9 @@ namespace Snake.Core
 {
     static class Collision
     {
+        /// <summary>
+        /// Check Collision every Frame.
+        /// </summary>
         public static void Update()
         {
             int Height = Game.Game.GAMEHEIGHT;
@@ -22,7 +25,12 @@ namespace Snake.Core
             foreach (Tail t in Game.Game.player.Tails)
             {
                 if (t.Position.x == 0 || t.Position.y == 0) Player.alive = false;
-                if (t.Position.x >= Width - 1 || t.Position.y >= Height - 1) Player.alive = false;
+
+                if (t.Position.x >= Width - 1 || t.Position.y >= Height - 1)
+                {
+                    Player.alive = false;
+                    //Music.Music.PlayGameOver();
+                }
             }
 
             // check if player collided with any Tail
@@ -31,7 +39,11 @@ namespace Snake.Core
                 {
                     if (i == 0) continue;
 
-                    if (Game.Game.player.Tails[0].Position == Game.Game.player.Tails[i].Position) Player.alive = false;
+                    if (Game.Game.player.Tails[0].Position == Game.Game.player.Tails[i].Position)
+                    {
+                        Player.alive = false;
+                        //Music.Music.PlayGameOver();
+                    }
                 }
             }
 
@@ -40,7 +52,7 @@ namespace Snake.Core
             {
                 Game.Game.player.AddTail();
                 Game.Game.player.AddScore();
-                Food.ResetPosition();
+                Food.ResetPosition(false);
             }
         }
 
