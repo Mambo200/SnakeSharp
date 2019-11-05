@@ -80,7 +80,7 @@ namespace Snake.Game
                     Console.Write(FieldChars.EMPTY);
                 Console.SetCursorPosition(v2.x - 1, v2.y);
             }
-            catch (Exception)
+            catch (Exception _ex)
             {
 
             }

@@ -13,7 +13,7 @@ namespace Snake
         static void Main(string[] args)
         {
             Game.Game.isRunning = true;
-
+            Core.Keyboard kb = new Core.Keyboard();
             Console.SetWindowSize(120, 40);
 
             //InputTask.Add(DEV.DoTesting);
@@ -25,14 +25,15 @@ namespace Snake
                 g.Start();
                 while (Player.alive)
                 {
-                    InputTask.Update();
+                    //InputTask.Update();
                     InputThread.Update();
                     g.Run();
                 }
 
                 //InputTask.Update(); // one last time to remove all
                 InputThread.RemoveAll();
-
+                // Simulate Keyinput to end Playerinput-Thread "Snake.Game.GetInput()"
+                kb.Send(Core.Keyboard.ScanCodeShort.KEY_A);
                 Console.SetCursorPosition(5, 5);
                 Console.WriteLine("Game Over");
                 Console.SetCursorPosition(5, 6);

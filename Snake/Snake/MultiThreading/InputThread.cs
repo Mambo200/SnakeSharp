@@ -13,6 +13,7 @@ namespace Snake.MultiThreading
 {
     class InputThread
     {
+        public static int Count { get { return allThreads.Count; } }
         private static List<Thread> allThreads = new List<Thread>();
 
         public static void Add(Thread _thread)

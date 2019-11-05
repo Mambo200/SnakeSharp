@@ -16,8 +16,6 @@ namespace Snake.Game
         public static Player player;
         public static Boolean isRunning = false;
 
-
-
         public const int GAMEWIDTH = 15;
         public const int GAMEHEIGHT = 15;
 
@@ -27,8 +25,8 @@ namespace Snake.Game
         Movement m;
         public void Start()
         {
-            Music.Music.Start();
-
+            Console.CursorSize = 100;
+            //Music.Music.Start();
             player = new Player();
             player.AddTail(5);
             m = new Movement();

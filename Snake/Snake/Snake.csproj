@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Collision.cs" />
+    <Compile Include="Core\Keyboard.cs" />
     <Compile Include="DEVELOP\DEV.cs" />
     <Compile Include="Core\EDirection.cs" />
     <Compile Include="Field\Field.cs" />
