@@ -1,5 +1,6 @@
 ﻿using Snake.Core;
 using Snake.Game;
+using Snake.Sound;
 using Snake.MultiThreading;
 
 using System;
@@ -74,10 +75,16 @@ namespace Snake.Field
 
         public static void ResetPosition(bool _destroyOld)
         {
+            // Player did not eat food
             if (_destroyOld)
             {
                 Helper.SetCursorPosition(Position);
                 Console.Write(FieldChars.EMPTY);
+            }
+            // Player eat food
+            else
+            {
+                SoundPlay.MakeEatSound();
             }
 
             Spawn();

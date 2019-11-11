@@ -26,7 +26,6 @@ namespace Snake.Game
         public void Start()
         {
             Console.CursorSize = 100;
-            //Music.Music.Start();
             player = new Player();
             player.AddTail(5);
             m = new Movement();
@@ -35,7 +34,8 @@ namespace Snake.Game
             Food.Start(player);
             player.Start();
 
-            //Music.Music.Start();
+            Music.Music.Start();
+            Music.Music.PlayBGM();
         }
 
         public void Run()

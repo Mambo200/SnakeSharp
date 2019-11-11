@@ -16,37 +16,29 @@ namespace Snake.Music
     {
         private static object loadMusic = new object();
 
-        public static SoundPlayer MusicPlayer { get; private set; }
+        public static SoundPlayer GameOverPlayer { get; private set; }
+        public static SoundPlayer BGMPlayer { get; private set; }
 
         public static void Start()
         {
-            MusicPlayer = new SoundPlayer();
+            GameOverPlayer = new SoundPlayer(Properties.Resources.Game_Over1);
+            BGMPlayer = new SoundPlayer(Properties.Resources.Background_Music);
         }
 
         /// <summary>
-        /// Loads the Music File from Resources.
+        /// Starts Play the Background music.
         /// </summary>
-        public static void Load(Stream _byteArray, bool _play = true)
-        {
-            Stop();
-            MusicPlayer.Dispose();
-            MusicPlayer = new SoundPlayer(_byteArray);
-            if (_play)
-                Play();
-        }
+        public static void PlayBGM() => BGMPlayer.PlayLooping();
 
         /// <summary>
-        /// Starts Play the music file.
+        /// Stops the Background music.
         /// </summary>
-        public static void Play() => MusicPlayer.Play();
+        public static void StopBGM() => BGMPlayer.Stop();
+
 
         /// <summary>
-        /// Stops the music.
+        /// Starts Play the game over music
         /// </summary>
-        public static void Stop() => MusicPlayer.Stop();
-
-
-
-        public static void PlayGameOver() => Load(new MemoryStream(Properties.Resources.Game_Over));
+        public static void PlayGameOver() => GameOverPlayer.Play();
     }
 }

@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,9 +84,20 @@
   <ItemGroup>
     <None Include="Resources\2 Mello - Mirror Temple %28Mirror Magic Mix%29 %28online-audio-converter.com%29.wav" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\pacman_chomp.wav" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="MusicFiles\Game_Over.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MusicFiles\Game_Over.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MusicFiles\Tetris 99 - Main Theme %281 hour%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MusicFiles\Tetris 99 - Main Theme.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

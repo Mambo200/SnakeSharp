@@ -29,7 +29,8 @@ namespace Snake.Core
                 if (t.Position.x >= Width - 1 || t.Position.y >= Height - 1)
                 {
                     Player.alive = false;
-                    //Music.Music.PlayGameOver();
+                    Music.Music.StopBGM();
+                    Music.Music.PlayGameOver();
                 }
             }
 
@@ -42,7 +43,8 @@ namespace Snake.Core
                     if (Game.Game.player.Tails[0].Position == Game.Game.player.Tails[i].Position)
                     {
                         Player.alive = false;
-                        //Music.Music.PlayGameOver();
+                        Music.Music.StopBGM();
+                        Music.Music.PlayGameOver();
                     }
                 }
             }
