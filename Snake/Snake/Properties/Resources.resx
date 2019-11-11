@@ -121,7 +121,16 @@
   <data name="Game_Over" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\MusicFiles\Game_Over.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="pacman_chomp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pacman_chomp.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PlayMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2 Mello - Mirror Temple (Mirror Magic Mix) (online-audio-converter.com).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game_Over1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MusicFiles\Game_Over.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Background_Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MusicFiles\Tetris 99 - Main Theme.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
